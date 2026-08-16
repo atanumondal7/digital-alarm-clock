@@ -7,7 +7,7 @@ def run_cmd(cmd, check=True):
     print(f"[INFO] Running command: {' '.join(cmd)}")
     result = subprocess.run(cmd, text=True)
     if check and result.returncode != 0:
-        print(f"Error command failed with return code {result.returncode}")
+        print(f"[ERROR] command failed with return code {result.returncode}")
         sys.exit(result.returncode)
         
 def run_simulation():
@@ -25,14 +25,8 @@ def run_simulation():
     compile_cmd = [
         "vlog",
         "-sv",
-        "key_reg.sv",
-        "alarm_register.sv",
-        "counter.sv",
-        "lcd_display_driver.sv",
-        "lcd_display_unit.sv",
-        "time_generator.sv",
-        "controller_unit.sv",
-        "clock_tb.sv"
+        "-f",
+        "files.f"
     ]
     run_cmd(compile_cmd)
     
