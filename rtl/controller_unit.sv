@@ -97,7 +97,7 @@ end
 if(cycley < 4'd5) begin
 load_new_c <= 0; 
 show_new_time <= 0;
-shift <= 0;
+shift <= 1;
 load_new_a <= 1;
 show_a <= 1;
 cycley <= cycley + 1'b1;

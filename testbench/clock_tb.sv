@@ -48,9 +48,9 @@ rst = 0; #6;
 fast_watch = 0;
 
 time_button = 1; #20;
-time_button = 0; #20; key = 4'd1; #20; key = 4'd2; #20; 
-key = 4'd3; #20; key = 4'd4; #20;
-
+time_button = 0; #20; key = 4'd2; #20; key = 4'd3; #20; 
+key = 4'd5; #20; key = 4'd8; #20;
+#100;
 alarm_button = 1; #20;
 alarm_button = 0; #20; key = 4'd1; #20; key = 4'd2; #20; 
 key = 4'd3; #20; key = 4'd5; #20;
