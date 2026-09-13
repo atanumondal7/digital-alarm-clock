@@ -17,6 +17,7 @@ logic [3:0] exp_time_show_ms_hr;
 logic [3:0] exp_time_show_ls_hr;
 logic [3:0] exp_time_show_ms_min;
 logic [3:0] exp_time_show_ls_min;
+logic [3:0] exp_time_show_sec;
 logic sound_alarm;
 
 $display("[SCOREBOARD] Calculating simulation results...");
@@ -29,32 +30,28 @@ exp_time_show_ms_hr = '0;
 exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
+exp_time_show_sec = '0;
 sound_alarm = 0;
 end
 
-else begin
+else if(item.time_button) begin
 
-case (item.mode)
+exp_time_show_ms_hr = exp_time_show_ls_hr;
+exp_time_show_ls_hr = exp_time_show_ms_min;
+exp_time_show_ms_min = exp_time_show_ls_min;
+exp_time_show_ls_min = item.key;
 
-2'b00: exp_p_out = exp_p_out;
-2'b01: exp_p_out = {item.s_in_l, exp_p_out[WIDTH-1:1]};
-2'b10: exp_p_out = {exp_p_out[WIDTH-2:0], item.s_in_r};
-2'b11: exp_p_out = item.p_in;
-
-default: exp_p_out = exp_p_out;
-endcase
 end
 
 item.display("ITEM");
 
-if(exp_p_out === item.p_out) begin
-$display("[SCOREBOARD MATCH] rst=%0b, mode=%b, s_in_l=%0b, s_in_r=%0b, p_in=%b -> p_out=%b", item.rst, item.mode, item.s_in_l, item.s_in_r, item.p_in, item.p_out);
+if(item.time_show_ms_hr == exp_time_show_ms_hr && item.time_show_ls_hr == exp_time_show_ls_hr && item.time_show_ms_min == exp_time_show_ms_min && item.time_show_ls_min == exp_time_show_ls_min) begin
+$display("[SCOREBOARD SUCCESS] Time: %0d%0d:%0d%0d", item.time_show_ms_hr, item.time_show_ls_hr, item.time_show_ms_min, item.time_show_ls_min);
 pass_count++;
 end
 else begin
-$display("[SCOREBOARD ERROR] rst=%0b, mode=%b, s_in_l=%0b, s_in_r=%0b, p_in=%b -> Exp: p_out=%b | Got: p_out=%b", item.rst, item.mode, item.s_in_l, item.s_in_r, item.p_in, exp_p_out, item.p_out);
 fail_count++;
-end
+$display("[SCOREBOARD ERROR] Expected Time: %0d%0d:%0d%0d | DUT Time: %0d%0d:%0d%0d", exp_time_show_ms_hr, exp_time_show_ls_hr, exp_time_show_ms_min, exp_time_show_ls_min, item.time_show_ms_hr, item.time_show_ls_hr, item.time_show_ms_min, item.time_show_ls_min); end
 end
 endtask
 endclass

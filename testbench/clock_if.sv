@@ -30,6 +30,7 @@ input time_show_ms_hr;
 input time_show_ls_hr;
 input time_show_ms_min;
 input time_show_ls_min;
+input time_show_sec;
 input sound_alarm;
 endclocking
 

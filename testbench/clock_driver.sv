@@ -24,7 +24,10 @@ vif.cb.alarm_button <= item.alarm_button;
 vif.cb.time_button <= item.time_button;
 vif.cb.fast_watch <= item.fast_watch;
 vif.cb.key <= item.key;
+
+repeat(256) begin
 @(vif.cb);
+end
 
 end
 endtask

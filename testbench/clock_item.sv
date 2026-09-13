@@ -16,7 +16,7 @@ logic [7:0] time_show_sec;
 logic sound_alarm;
 
 function void display(string tag);
-$display("[%s] Time: %0d%0d:%0d%0d:%02d | Reset: %0b | Time Button: %0b | Alarm Button: %0b | Fast Watch: %0b", time_show_ms_hr[3:0], time_show_ls_hr[3:0], time_show_ms_min[3:0], time_show_ls_min[3:0], time_show_sec, rst, time_button, alarm_button, fast_watch);
+$display("[%s] Time: %0d%0d:%0d%0d:%02d | Reset: %0b | Time Button: %0b | Alarm Button: %0b | Fast Watch: %0b", tag, time_show_ms_hr[3:0], time_show_ls_hr[3:0], time_show_ms_min[3:0], time_show_ls_min[3:0], time_show_sec, rst, time_button, alarm_button, fast_watch);
 endfunction
 
 function clock_item copy();

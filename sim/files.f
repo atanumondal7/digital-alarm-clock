@@ -9,4 +9,6 @@
 ../rtl/lcd_display_unit.sv
 ../rtl/time_generator.sv
 
+../testbench/clock_pkg.sv
+../testbench/clock_if.sv
 ../testbench/clock_tb.sv

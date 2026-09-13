@@ -1,10 +1,10 @@
-module controller_unit #(localparam CLK_FREQ = 256) (
+module controller_unit #(parameter WIDTH = 4) (
 input logic clk,
 input logic rst,
 input logic alarm_button,
 input logic time_button,
 input logic fast_watch,
-input logic [3:0] key = '0,
+input logic [WIDTH-1:0] key,
 output logic [7:0] time_show_ms_hr,
 output logic [7:0] time_show_ls_hr,
 output logic [7:0] time_show_ms_min,
@@ -24,7 +24,7 @@ logic show_a;
 logic load_new_a;
 logic shift;
 
-always @(posedge clk) begin
+always_ff @(posedge clk) begin
 if(rst) begin
 prev_time_button <= 0; 
 end
@@ -33,7 +33,7 @@ prev_time_button <= time_button;
 end
 end
 
-always @(posedge clk) begin
+always_ff @(posedge clk) begin
 if(rst) begin
 prev_alarm_button <= 0; 
 end
@@ -64,6 +64,9 @@ show_new_time <= 0;
 shift <= 0;
 load_new_c <= 0; 
 load_new_a <= 0;
+cycle <= '0;
+cyclex <= '0;
+cycley <= '0;
 end 
 
 else if(pulse_time_button) begin cycle <= 2'b01; end
@@ -115,7 +118,7 @@ end
 
 end
 
-default: cycle = '0; 
+default: cycle <= '0; 
 
 endcase
 
@@ -210,12 +213,17 @@ time_generator u_timegen_0 (
 .one_second(one_second)
 );
 
-always_ff @(posedge one_second) begin
+always_ff @(posedge clk) begin
+if(rst) begin
+time_show_sec <= '0;
+end
+else if(one_second) begin
 if(time_show_sec == 6'd59) begin
 time_show_sec <= '0;
 end
 else begin
 time_show_sec <= time_show_sec + 1'b1;
+end
 end
 end
 endmodule

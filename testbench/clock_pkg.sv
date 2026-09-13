@@ -1,20 +1,20 @@
 `timescale 1ns/1ps
 
-`ifndef USR_PACKAGE_SV
-`define USR_PACKAGE_SV
+`ifndef CLOCK_PACKAGE_SV
+`define CLOCK_PACKAGE_SV
 
-package usr_pkg;
+package clock_pkg;
 
 localparam int WIDTH = 4;
 
-`include "usr_item.sv"
-`include "usr_generator.sv"
-`include "usr_driver.sv"
-`include "usr_monitor.sv"
-`include "usr_coverage.sv"
-`include "usr_scoreboard.sv"
-`include "usr_environment.sv"
+`include "clock_item.sv"
+`include "clock_generator.sv"
+`include "clock_driver.sv"
+`include "clock_monitor.sv"
+`include "clock_coverage.sv"
+`include "clock_scoreboard.sv"
+`include "clock_environment.sv"
 
-endpackage : usr_pkg
+endpackage : clock_pkg
 
 `endif

@@ -4,7 +4,8 @@
 class generator;
 
 mailbox #(clock_item) gen2drv;
-int loop_count = 200*256;
+int loop_count = 10;
+int loop = 0;
 
 function new(mailbox #(clock_item) gen2drv);
 this.gen2drv = gen2drv;
@@ -16,12 +17,39 @@ clock_item item;
 $display("[GENERATOR] Generating stimulus for DUT...");
 
 item = new();
-repeat(loop_count) begin
+item.rst = 1;
+item.time_button = 0;
+item.alarm_button = 0;
+item.fast_watch = 0;
+item.key = '0;
+gen2drv.put(item);
+
+repeat(loop_count-1) begin
+if(loop == 4) begin
+item = new();
+item.rst = 0;
+item.time_button = 1;
+item.alarm_button = 0;
+item.fast_watch = 0;
+item.key = 4'd1;
+gen2drv.put(item);
+item.key = 4'd3;
+gen2drv.put(item);
+item.key = 4'd5;
+gen2drv.put(item);
+item.key = 4'd7;
+gen2drv.put(item);
+end
+else begin 
+item = new();
 item.rst = 0;
 item.time_button = 0;
 item.alarm_button = 0;
 item.fast_watch = 0;
 item.key = '0;
+gen2drv.put(item);
+end
+loop = loop + 1;
 end
 
 endtask
