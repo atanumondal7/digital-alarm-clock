@@ -33,13 +33,12 @@ item.alarm_button = 0;
 item.fast_watch = 0;
 item.key = 4'd1;
 gen2drv.put(item);
+end
+else if(loop == 5) begin
 item.key = 4'd3;
 gen2drv.put(item);
-item.key = 4'd5;
-gen2drv.put(item);
-item.key = 4'd7;
-gen2drv.put(item);
 end
+
 else begin 
 item = new();
 item.rst = 0;
