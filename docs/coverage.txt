@@ -1,0 +1,50 @@
+# [SCOREBOARD SUCCESS] Time: 08:15:42
+# [ITEM] Time: 08:16:43 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:16:43
+# [ITEM] Time: 08:17:44 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:17:44
+# [ITEM] Time: 08:18:45 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:18:45
+# [ITEM] Time: 08:19:46 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:19:46
+# [ITEM] Time: 08:20:47 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:20:47
+# [ITEM] Time: 08:21:48 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:21:48
+# [ITEM] Time: 08:22:49 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:22:49
+# [ITEM] Time: 08:23:50 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:23:50
+# [ITEM] Time: 08:24:51 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:24:51
+# [ITEM] Time: 08:25:52 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:25:52
+# [ITEM] Time: 08:26:53 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:26:53
+# [ITEM] Time: 08:27:54 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:27:54
+# [ITEM] Time: 08:28:55 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:28:55
+# [ITEM] Time: 08:29:56 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:29:56
+# [ITEM] Time: 08:30:57 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:30:57
+# [ITEM] Time: 08:31:58 | Reset: 0 | Time Button: 0 | Alarm Button: 0 | Fast Watch: 1
+# [SCOREBOARD SUCCESS] Time: 08:31:58
+# ===================================================
+#                COVERAGE SUMMARY
+# ===================================================
+#  Reset Cover: Covered
+#  fast Watch Cover: Covered
+#  Time Button Cover: Not Covered
+#  Alarm Button Cover: Not Covered
+#  Key Cover: 1/10, 10.00%
+# ===================================================
+#  Total Coverage: 50.00%
+# ===================================================
+#             FINAL VERIFICATION SUMMARY
+# ===================================================
+#  Total Passed: 1484
+#  Total Failed: 16
+# ===================================================
+# >>>> SIMULATION FAILED <<<<
