@@ -51,17 +51,17 @@ exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
 end
-else if(
+end
 
 item.display("ITEM");
 
-if(item.time_show_ms_hr == exp_time_show_ms_hr && item.time_show_ls_hr == exp_time_show_ls_hr && item.time_show_ms_min == exp_time_show_ms_min && item.time_show_ls_min == exp_time_show_ls_min) begin
-$display("[SCOREBOARD SUCCESS] Time: %0d%0d:%0d%0d", item.time_show_ms_hr, item.time_show_ls_hr, item.time_show_ms_min, item.time_show_ls_min);
+if(item.time_show_ms_hr[3:0] == exp_time_show_ms_hr && item.time_show_ls_hr[3:0] == exp_time_show_ls_hr && item.time_show_ms_min[3:0] == exp_time_show_ms_min && item.time_show_ls_min[3:0] == exp_time_show_ls_min) begin
+$display("[SCOREBOARD SUCCESS] Time: %0d%0d:%0d%0d:%02d", item.time_show_ms_hr[3:0], item.time_show_ls_hr[3:0], item.time_show_ms_min[3:0], item.time_show_ls_min[3:0], item.time_show_sec);
 pass_count++;
 end
 else begin
 fail_count++;
-$display("[SCOREBOARD ERROR] Expected Time: %0d%0d:%0d%0d | DUT Time: %0d%0d:%0d%0d", exp_time_show_ms_hr, exp_time_show_ls_hr, exp_time_show_ms_min, exp_time_show_ls_min, item.time_show_ms_hr, item.time_show_ls_hr, item.time_show_ms_min, item.time_show_ls_min); end
+$display("[SCOREBOARD ERROR] Expected Time: %0d%0d:%0d%0d:%02d | DUT Time: %0d%0d:%0d%0d:%02d", exp_time_show_ms_hr, exp_time_show_ls_hr, exp_time_show_ms_min, exp_time_show_ls_min, exp_time_show_sec, item.time_show_ms_hr[3:0], item.time_show_ls_hr[3:0], item.time_show_ms_min[3:0], item.time_show_ls_min[3:0], item.time_show_sec); end
 end
 endtask
 endclass
