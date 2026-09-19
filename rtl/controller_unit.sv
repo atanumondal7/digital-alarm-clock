@@ -226,4 +226,5 @@ time_show_sec <= time_show_sec + 1'b1;
 end
 end
 end
+
 endmodule

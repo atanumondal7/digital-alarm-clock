@@ -4,8 +4,7 @@
 class generator;
 
 mailbox #(clock_item) gen2drv;
-int loop_count = 10;
-int loop = 0;
+int loop_count = 1500;
 
 function new(mailbox #(clock_item) gen2drv);
 this.gen2drv = gen2drv;
@@ -24,45 +23,7 @@ item.fast_watch = 0;
 item.key = '0;
 gen2drv.put(item);
 
-repeat(loop_count) begin
-if(loop == 4) begin
-item = new();
-item.rst = 0;
-item.time_button = 1;
-item.alarm_button = 0;
-item.fast_watch = 0;
-item.key = 4'd1;
-gen2drv.put(item);
-end
-else if(loop == 5) begin
-item = new();
-item.rst = 0;
-item.time_button = 0;
-item.alarm_button = 0;
-item.fast_watch = 0;
-item.key = 4'd3;
-gen2drv.put(item);
-end
-else if(loop == 6) begin
-item = new();
-item.rst = 0;
-item.time_button = 0;
-item.alarm_button = 0;
-item.fast_watch = 0;
-item.key = 4'd5;
-gen2drv.put(item);
-end
-else if(loop == 7) begin
-item = new();
-item.rst = 0;
-item.time_button = 0;
-item.alarm_button = 0;
-item.fast_watch = 0;
-item.key = 4'd7;
-gen2drv.put(item);
-end
-
-else begin 
+repeat(loop_count-500) begin
 item = new();
 item.rst = 0;
 item.time_button = 0;
@@ -71,7 +32,15 @@ item.fast_watch = 0;
 item.key = '0;
 gen2drv.put(item);
 end
-loop = loop + 1;
+
+repeat(500) begin
+item = new();
+item.rst = 0;
+item.time_button = 0;
+item.alarm_button = 0;
+item.fast_watch = 1;
+item.key = '0;
+gen2drv.put(item);
 end
 
 endtask
