@@ -9,7 +9,7 @@ output logic [7:0] time_show_ms_hr,
 output logic [7:0] time_show_ls_hr,
 output logic [7:0] time_show_ms_min,
 output logic [7:0] time_show_ls_min,
-output logic [7:0] time_show_sec='0,
+output logic [7:0] time_show_sec,
 output logic sound_alarm
 );
 
@@ -53,8 +53,8 @@ assign pulse_time_button = !prev_time_button && time_button;
 assign pulse_alarm_button = !prev_alarm_button && alarm_button;
 
 logic [1:0] cycle;
-logic [3:0] cyclex = '0;
-logic [3:0] cycley = '0;
+logic [3:0] cyclex;
+logic [3:0] cycley;
 
 always_ff @(posedge clk) begin
 
