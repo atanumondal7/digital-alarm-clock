@@ -1,4 +1,4 @@
-# Digital Alarm Clock
+# Digital Alarm Clock [WORK IN PROGRESS]
 
 I built a fully automated digital alarm clock in SystemVerilog and verified it using a UVM-Style transaction oriented, mailbox connected testbench. As of now it has supports quite few features.
 
