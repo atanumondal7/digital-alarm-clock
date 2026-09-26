@@ -44,19 +44,19 @@ exp_time_show_ls_min = item.key;
 end
 
 else begin
-if(exp_time_show_ms_hr == 4'd2 && exp_time_show_ls_hr == 4'd3 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+if(exp_time_show_ms_hr == 4'd2 && exp_time_show_ls_hr == 4'd3 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ms_hr = '0;
 exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
 end
-else if(exp_time_show_ls_hr == 4'd9 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+else if(exp_time_show_ls_hr == 4'd9 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ms_hr = exp_time_show_ms_hr + 1'b1;
 exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
 end
-else if(exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+else if(exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ls_hr = exp_time_show_ls_hr + 1'b1;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
