@@ -10,7 +10,7 @@ I'm making this public now because the design itself is done and runs, even thou
  
 ## Architecture
  
-![RTL Block Diagram](docs/Digital%20Alarm%20Clock%20(RTL).png)
+![RTL Block Diagram](docs/architecture_rtl.png)
  
 The design is a `controller_unit` that wires together a small set of sub-modules:
  
@@ -35,14 +35,14 @@ Pressing the **time button** or **alarm button** kicks off a 5-cycle window wher
  
 The testbench is transaction-oriented and class-based:
  
-- **`[clock_item]'(testbench/clock_item.sv)** — the transaction: reset, button presses, key value, fast-watch flag
-- **`[clock_generator]'(testbench/clock_generator.sv)** — randomizes transactions
-- **`[clock_driver]'(testbench/clock_driver.sv)** — drives them onto the DUT via a virtual interface (`clock_if`)
-- **`[clock_monitor]'(testbench/clock_monitor.sv)** — samples DUT inputs/outputs and packages them as observed transactions
-- **`[clock_scoreboard]'(testbench/clock_scoreboard.sv)** — reimplements the expected time/alarm behavior and checks it against what the monitor saw
-- **`[clock_coverage]'(testbench/clock_coverage.sv)** — functional coverage (reset, fast-watch, button presses, key values)
-- **`[clock_environment]'(testbench/clock_environment.sv)** — wires the above together with mailboxes
-- **`[clock_tb]'(testbench/clock_tb.sv)** — the top-level module that instantiates the DUT and the environment
+- **[`clock_item`](testbench/clock_item.sv)** — the transaction: reset, button presses, key value, fast-watch flag
+- **[`clock_generator`](testbench/clock_generator.sv)** — randomizes transactions
+- **[`clock_driver`](testbench/clock_driver.sv)** — drives them onto the DUT via a virtual interface (`clock_if`)
+- **[`clock_monitor`](testbench/clock_monitor.sv)** — samples DUT inputs/outputs and packages them as observed transactions
+- **[`clock_scoreboard`](testbench/clock_scoreboard.sv)** — reimplements the expected time/alarm behavior and checks it against what the monitor saw
+- **[`clock_coverage`](testbench/clock_coverage.sv)** — functional coverage (reset, fast-watch, button presses, key values)
+- **[`clock_environment`](testbench/clock_environment.sv)** — wires the above together with mailboxes
+- **[`clock_tb`](testbench/clock_tb.sv)** — the top-level module that instantiates the DUT and the environment
 
 ### Running it
  
