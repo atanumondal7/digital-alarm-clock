@@ -44,22 +44,26 @@ exp_time_show_ls_min = item.key;
 end
 
 else begin
+if(!item.fast_watch) begin
 if(exp_time_show_ms_hr == 4'd2 && exp_time_show_ls_hr == 4'd3 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ms_hr = '0;
 exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
+exp_time_show_sec = '0;
 end
 else if(exp_time_show_ls_hr == 4'd9 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ms_hr = exp_time_show_ms_hr + 1'b1;
 exp_time_show_ls_hr = '0;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
+exp_time_show_sec = '0;
 end
 else if(exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ls_hr = exp_time_show_ls_hr + 1'b1;
 exp_time_show_ms_min = '0;
 exp_time_show_ls_min = '0;
+exp_time_show_sec = '0;
 end
 else if(exp_time_show_ls_min == 4'd9 && exp_time_show_sec == 6'd59) begin
 exp_time_show_ms_min = exp_time_show_ms_min + 1'b1;
@@ -71,26 +75,50 @@ exp_time_show_ls_min = exp_time_show_ls_min + 1'b1;
 exp_time_show_sec = '0;
 end
 else begin
-if(!item.fast_watch) begin
 exp_time_show_sec = exp_time_show_sec + 1'b1;
+end
+end
+else begin
+
+if(exp_time_show_sec == 6'd59) begin
+exp_time_show_sec = '0;
 end
 else begin
 exp_time_show_sec = exp_time_show_sec + 1'b1;
-if(exp_time_show_ls_min != 4'd9) begin
-exp_time_show_ls_min = exp_time_show_ls_min + 1'b1;
-end
-else begin
-exp_time_show_ls_min = '0;
-exp_time_show_ms_min = exp_time_show_ms_min + 1'b1;
 end
 
+if(exp_time_show_ms_hr == 4'd2 && exp_time_show_ls_hr == 4'd3 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+exp_time_show_ms_hr = '0;
+exp_time_show_ls_hr = '0;
+exp_time_show_ms_min = '0;
+exp_time_show_ls_min = '0;
 end
+else if(exp_time_show_ls_hr == 4'd9 && exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+exp_time_show_ms_hr = exp_time_show_ms_hr + 1'b1;
+exp_time_show_ls_hr = '0;
+exp_time_show_ms_min = '0;
+exp_time_show_ls_min = '0;
+end
+else if(exp_time_show_ms_min == 4'd5 && exp_time_show_ls_min == 4'd9) begin
+exp_time_show_ls_hr = exp_time_show_ls_hr + 1'b1;
+exp_time_show_ms_min = '0;
+exp_time_show_ls_min = '0;
+end
+else if(exp_time_show_ls_min == 4'd9) begin
+exp_time_show_ms_min = exp_time_show_ms_min + 1'b1;
+exp_time_show_ls_min = '0;
+end
+else begin
+exp_time_show_ls_min = exp_time_show_ls_min + 1'b1;
+end
+
+
 end
 end
 
 item.display("ITEM");
 
-if(item.time_show_ms_hr[3:0] == exp_time_show_ms_hr && item.time_show_ls_hr[3:0] == exp_time_show_ls_hr && item.time_show_ms_min[3:0] == exp_time_show_ms_min && item.time_show_ls_min[3:0] == exp_time_show_ls_min) begin
+if(item.time_show_ms_hr[3:0] == exp_time_show_ms_hr && item.time_show_ls_hr[3:0] == exp_time_show_ls_hr && item.time_show_ms_min[3:0] == exp_time_show_ms_min && item.time_show_ls_min[3:0] == exp_time_show_ls_min && item.time_show_sec == exp_time_show_sec) begin
 $display("[SCOREBOARD SUCCESS] Time: %0d%0d:%0d%0d:%0d%0d", item.time_show_ms_hr[3:0], item.time_show_ls_hr[3:0], item.time_show_ms_min[3:0], item.time_show_ls_min[3:0], (item.time_show_sec / 10), (item.time_show_sec % 10));
 pass_count++;
 end

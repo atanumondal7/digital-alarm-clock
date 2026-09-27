@@ -26,7 +26,7 @@ vif.cb.time_button <= item.time_button;
 vif.cb.fast_watch <= item.fast_watch;
 vif.cb.key <= item.key;
 
-repeat(257) begin
+repeat(260) begin
 @(vif.cb);
 end
 
