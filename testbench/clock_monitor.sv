@@ -30,6 +30,7 @@ prev_alarm_button = vif.alarm_button;
 prev_time_button = vif.time_button;
 prev_fast_watch = vif.fast_watch;
 prev_key = vif.key;
+@(vif.cb);
 
 forever begin
 repeat (256) begin
@@ -46,6 +47,7 @@ item.time_show_ms_hr = vif.cb.time_show_ms_hr;
 item.time_show_ls_hr = vif.cb.time_show_ls_hr;
 item.time_show_ms_min = vif.cb.time_show_ms_min;
 item.time_show_ls_min = vif.cb.time_show_ls_min;
+item.time_show_sec = vif.cb.time_show_sec;
 item.sound_alarm = vif.cb.sound_alarm;
 
 mon2scb.put(item.copy());
