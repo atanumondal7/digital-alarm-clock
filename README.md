@@ -63,18 +63,18 @@ The RTL itself works — these are testbench-side gaps I'm actively fixing on se
 2. The alarm button path isn't fully covered by the testbench yet.
 3. The 4-key entry cycle is a bit too short for the driver to reliably push randomized keys through in time, causing occasional dropped/misaligned key writes.
 4. Functional coverage is incomplete — currently around 50%, with the time-button and alarm-button coverage bins not yet hit.
-Current run (see `docs/coverage.txt`): 1484 passed, 16 failed, out of a coverage run that hit reset and fast-watch bins but not time/alarm button bins yet.
+Current run (see docs/coverage.txt): 1500 passed, 0 failed. Coverage hit the reset and fast-watch bins but not the time/alarm button bins yet — that's the main gap left to close.
  
 ---
  
 ## Repo layout
  
-```
-rtl/         - synthesizable design
-testbench/   - class-based verification environment
-sim/         - run script + file list for Questa/ModelSim
-docs/        - block diagrams, coverage log
-```
+| Folder | Contents |
+|---|---|
+| [`rtl/`](rtl/) | Synthesizable design |
+| [`testbench/`](testbench/) | Class-based verification environment |
+| [`sim/`](sim/) | Run script + file list for Questa/ModelSim |
+| [`docs/`](docs/) | Block diagrams, coverage log |
  
 ---
  
