@@ -4,7 +4,7 @@
  
 A digital alarm clock built in SystemVerilog RTL, verified with a class-based, transaction-oriented testbench (driver / monitor / scoreboard / coverage collector, all connected through mailboxes — basically a UVM-style environment without pulling in the UVM library).
  
-I'm making this public now because the design itself is done and runs, even though verification is still catching up. If you look at the coverage log and see failures, that's expected right now — see [Known Issues](#known-issues-in-the-testbench) below.
+I'm making this public now because the design itself is done and runs and it is fully aligned with the spec sheet, even though verification is still catching up. If you look at the coverage log and see failures, that's expected right now — see [Known Issues](#known-issues-in-the-testbench) below.
  
 ---
  
@@ -20,7 +20,7 @@ The design is a `controller_unit` that wires together a small set of sub-modules
 | [`key_reg.sv`](rtl/key_reg.sv) | Shifts in 4-bit key presses into a buffer as the user enters a new time/alarm value |
 | [`counter.sv`](rtl/counter.sv) | Holds and increments the current time (hours/minutes) |
 | [`alarm_register.sv`](rtl/alarm_register.sv) | Holds the programmed alarm time |
-| [`time_generator.sv`](rtl/time_generator.sv) | Generates the one-second / one-minute tick, with a fast-forward mode for simulation |
+| [`time_generator.sv`](rtl/time_generator.sv) | Generates the one-second / one-minute tick, with a fast-forward mode for simulation (Clock Frequency - 256 Hz) |
 | [`lcd_display_unit.sv`](rtl/lcd_display_unit.sv) / [`lcd_display_driver.sv`](rtl/lcd_display_driver.sv) | Decides what to show on the display (current time, alarm time, or the value being entered) and drives the output |
  
 ### How entry works
@@ -63,7 +63,8 @@ The RTL itself works — these are testbench-side gaps I'm actively fixing on se
 1. Time-flip-over (e.g. 23:59 → 00:00) isn't correctly modeled yet, which causes some scoreboard mismatches.
 2. The alarm button path isn't fully covered by the testbench yet.
 3. The 4-key entry cycle is a bit too short for the driver to reliably push randomized keys through in time, causing occasional dropped/misaligned key writes.
-4. Functional coverage is incomplete — currently around 50%, with the time-button and alarm-button coverage bins not yet hit.
+4. Time button cycle in the testbench for sending the keys is out of sync of the design's clock frequency, so as of now, keys are being sent at the wrong time when the key register is not listening for keys.
+5. Functional coverage is incomplete — currently around 50%, with the time-button and alarm-button coverage bins not yet hit.
 Current run (see docs/coverage.txt): 1500 passed, 0 failed. Coverage hit the reset and fast-watch bins but not the time/alarm button bins yet — that's the main gap left to close.
  
 ---
