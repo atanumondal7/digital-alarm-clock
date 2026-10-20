@@ -66,6 +66,7 @@ The RTL itself works — these are testbench-side gaps I'm actively fixing on se
 4. Time button cycle in the testbench for sending the keys is out of sync of the design's clock frequency, so as of now, keys are being sent at the wrong time when the key register is not listening for keys.
 5. Functional coverage is incomplete — currently around 50%, with the time-button and alarm-button coverage bins not yet hit.
 Current run (see docs/coverage.txt): 1500 passed, 0 failed. Coverage hit the reset and fast-watch bins but not the time/alarm button bins yet — that's the main gap left to close.
+6. When `fast_watch` goes low during one minute completion, the minute counter jumps by 2 minute cycles instead of one.
  
 ---
  
